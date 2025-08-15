@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local map = vim.keymap.set
+local dotnet = require("easy-dotnet")
 vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc")
 
 -- Exit insert mode with 'jj' in insert mode
@@ -14,3 +15,7 @@ map("n", "qq", ":q<CR>", { noremap = true, silent = true })
 map("v", "<Del>", '"_d', { noremap = true, silent = true })
 
 map("n", "<leader>ol", "<cmd>Lspsaga outline<CR>", { desc = "show outline" })
+
+vim.keymap.set("n", "<C-p>", function()
+  dotnet.run_project()
+end)
